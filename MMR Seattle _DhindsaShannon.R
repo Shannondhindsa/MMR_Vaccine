@@ -1,8 +1,5 @@
 
 
-# Set your working directory
-setwd("/Users/shannondhindsa/Downloads/EPH505/Labs/code")
-
 
 # =============================================================================
 # MMR Vaccination Coverage Analysis
@@ -182,3 +179,21 @@ ggplot(heatmap_data, aes(x = community, y = age_group, fill = fully_cov)) +
     panel.grid  = element_blank(),
     axis.text.x = element_text(angle = 30, hjust = 1)
   )
+
+# -----------------------------------------------------------------------------
+# 9. EXPORT OUTPUTS
+# -----------------------------------------------------------------------------
+
+# Save the heatmap
+ggsave(
+  filename = "mmr_coverage_heatmap.png",
+  width    = 10,
+  height   = 5,
+  dpi      = 300
+)
+
+# Save the KPI summary
+write.csv(kpi, "kpi_summary.csv", row.names = FALSE)
+
+# Save the full coverage table
+write.csv(coverage, "coverage_by_community.csv", row.names = FALSE)
